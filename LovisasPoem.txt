@@ -2,4 +2,11 @@ Roses are red,
 Violets are blue,
 Github is comlicated,
 But what can you do
+<<<<<<< HEAD
 nothing but fighting through
+=======
+
+*Trying to act like I'm not frustrated*
+
+
+>>>>>>> 8c101ea3b29d8c040c2a22d83b39a08ab851338f
