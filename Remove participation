@@ -1,0 +1,33 @@
+JButton removebtn = new JButton("Cancel particiaption");
+		removebtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+HÄR KAN DU SÄTTA IN KODEN ELLEN
+         String ID = JOptionPane.showInputDialog(null, "Enter MemberID:");
+         String name = JOptionPane.showInputDialog(null, "Enter course name:");
+
+				String SQL = "DELETE FROM courseEnrollment WHERE memberID = (SELECT memberID,courseID, coursename from courseEnrollment, courses WHERE courseEnrollment.courseID = Courses.courseID AND Courses.courseName ='" + name "' AND courseEnrollment.memberID = '" + ID '");
+				Statement stmt= null;
+				Connection conn = null;
+				ResultSet rs = null;
+				try {
+					conn = DriverManager.getConnection("jdbc:sqlite:/Users/danielcuracica/Databas/fitnessABdb");
+					stmt=conn.createStatement();
+					rs=	stmt.executeQuery(SQL);
+					String out ="";
+			        while (rs.next()){
+			        out +=(rs.getString("memberID") + " \tl " + rs.getString("spot") + " \tl " + rs.getString("courseID") + "\n");
+			        }
+			        JOptionPane.showMessageDialog(null, out + " has been removed from booked courses");
+			        
+				}catch (SQLException sqle) {
+					JOptionPane.showMessageDialog(null,  sqle.getMessage());
+					
+					
+				}
+			}
+		});
+
+			}
+		});
+		removebtn.setBounds(258, 193, 155, 29);
+		contentPane.add(removebtn);
